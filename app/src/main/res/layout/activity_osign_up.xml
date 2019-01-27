@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".osignUp">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wallpaper" />
+
+    <EditText
+    android:id="@+id/email_signup"
+    android:layout_width="289dp"
+    android:layout_height="51dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginEnd="18dp"
+    android:autofillHints=""
+    android:background="@color/colorPrimaryDark"
+    android:ems="10"
+    android:hint="          Email"
+    android:inputType="textEmailAddress"
+    android:textAlignment="viewStart"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.418"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/caption"
+    tools:ignore="MissingConstraints" />
+
+<EditText
+    android:id="@+id/password_signup"
+    android:layout_width="289dp"
+    android:layout_height="49dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="18dp"
+    android:background="@color/colorPrimaryDark"
+    android:ems="10"
+    android:hint="          Password"
+    android:inputType="textPassword"
+    android:textAlignment="viewStart"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.406"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/email_signup" />
+
+<EditText
+    android:id="@+id/repassword_signup"
+    android:layout_width="289dp"
+    android:layout_height="49dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="18dp"
+    android:background="@color/colorPrimaryDark"
+    android:ems="10"
+    android:hint="         Repeat password"
+    android:inputType="textPassword"
+    android:textAlignment="viewStart"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.4"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/password_signup" />
+
+<EditText
+    android:id="@+id/Aproval_ID"
+    android:layout_width="289dp"
+    android:layout_height="69dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="18dp"
+    android:background="@color/colorPrimaryDark"
+    android:elegantTextHeight="false"
+    android:ems="10"
+    android:hint="  Write your ID"
+    android:inputType="textShortMessage"
+    android:text=""
+    android:textColor="@color/colorPrimary"
+    android:textIsSelectable="false"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.383"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/repassword_signup" />
+
+<Button
+    android:id="@+id/sign_up"
+    android:layout_width="250dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="44dp"
+    android:layout_marginEnd="8dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:text="Sign up"
+    android:textColor="@color/common_google_signin_btn_text_dark_default"
+    android:textSize="22sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.45"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/Aproval_ID"
+    tools:ignore="MissingConstraints" />
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:contentDescription="TODO"
+    android:src="@android:drawable/ic_lock_lock"
+    android:tint="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="@+id/password_signup"
+    app:layout_constraintStart_toStartOf="@+id/password_signup"
+    app:layout_constraintTop_toTopOf="@+id/password_signup"
+    app:layout_constraintVertical_bias="0.411"
+    tools:ignore="MissingConstraints" />
+
+<ImageView
+    android:id="@+id/imageView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:contentDescription="TODO"
+    android:src="@android:drawable/ic_lock_lock"
+    android:tint="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="@+id/repassword_signup"
+    app:layout_constraintStart_toStartOf="@+id/repassword_signup"
+    app:layout_constraintTop_toTopOf="@+id/repassword_signup"
+    tools:ignore="MissingConstraints" />
+
+<ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="24dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:src="@android:drawable/ic_dialog_email"
+    android:tint="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="@+id/email_signup"
+    app:layout_constraintStart_toStartOf="@+id/email_signup"
+    app:layout_constraintTop_toTopOf="@+id/email_signup" />
+
+<ImageView
+    android:id="@+id/logo"
+    android:layout_width="364dp"
+    android:layout_height="108dp"
+    android:layout_marginTop="68dp"
+    android:src="@drawable/logo"
+    android:tint="@color/colorPrimary"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="16dp" />
+
+<TextView
+    android:id="@+id/caption"
+    android:layout_width="299dp"
+    android:layout_height="69dp"
+    android:fontFamily="casual"
+    android:text="We help you find volnteering apportunities"
+    android:textAlignment="center"
+    android:textColor="@color/colorPrimary"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintTop_toBottomOf="@+id/logo"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="33dp" />
+
+
+</android.support.constraint.ConstraintLayout>
