@@ -1,5 +1,7 @@
 package com.example.betterfly;
 
+
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,18 +11,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
+import com.google.firebase.FirebaseApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class osignUp extends AppCompatActivity implements View.OnClickListener {
 
-    ProgressBar progressBar;
-    EditText editTextEmail, editTextPassword, editTextRepeatPassword, editTextIdApproval;
+    private ProgressBar progressBar;
+    private EditText editTextEmail, editTextPassword, editTextRepeatPassword, editTextIdApproval;
 
     private FirebaseAuth mAuth;
 
@@ -31,8 +34,11 @@ public class osignUp extends AppCompatActivity implements View.OnClickListener {
 
         editTextEmail = (EditText) findViewById(R.id.email_signup);
         editTextPassword = (EditText) findViewById(R.id.password_signup);
+        editTextRepeatPassword = (EditText) findViewById(R.id.repassword_signup);
         editTextIdApproval = (EditText) findViewById(R.id.Aproval_ID);
-        //progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
 
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
@@ -42,10 +48,13 @@ public class osignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void registerUser() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+
+        ///NAME OF THE ORG
+        final String name = null;
+        final String password = editTextPassword.getText().toString().trim();
         String repaetPassword = editTextRepeatPassword.getText().toString().trim();
-        String approvalId = editTextIdApproval.getText().toString().trim();
+        final String approvalId = editTextIdApproval.getText().toString().trim();
 
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
@@ -100,25 +109,49 @@ public class osignUp extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
-
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
-                    startActivity(new Intent(osignUp.this, MainActivity.class));
-                } else {
+                    Organization orgUser = new Organization(
+                            name,
+                            email,
+                            approvalId,
+                            Status.PROCESSING
 
-                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
+                    );
 
-                    } else {
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    FirebaseDatabase.getInstance().getReference("Organization")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(orgUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressBar.setVisibility(View.GONE);
+                            if (task.isSuccessful()) {
+                                Toast.makeText(osignUp.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+                                finish();
+                                Intent intent = new Intent(osignUp.this, OrgProcessActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+                            } else {
+                                //display a failure message
+                                Toast.makeText(osignUp.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+                            }
+
+
+                        }
+                    });
+                }
+                        else {
+                        Toast.makeText(osignUp.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                 }
-            }
+
         });
     }
 

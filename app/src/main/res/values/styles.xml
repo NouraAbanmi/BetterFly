@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:foreground">@color/trans</item>
     </style>
+
+    <style name="color">
+        <item name="android:layout_width">79dp</item>
+        <item name="android:layout_height">89dp</item>
+    </style>
 </resources>
