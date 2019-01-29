@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wallpaper" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="364dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/logo"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="299dp"
+        android:layout_height="69dp"
+        android:fontFamily="casual"
+        android:text="We help you find volnteering apportunities"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="56dp" />
+
+    <EditText
+        android:id="@+id/editText14"
+        android:layout_width="290dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Sorry!! We are still processing your registeration request !"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/caption"
+        tools:layout_editor_absoluteX="60dp" />
+
+
+</android.support.constraint.ConstraintLayout>
