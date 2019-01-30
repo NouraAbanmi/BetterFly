@@ -68,6 +68,7 @@ public class vsignUp extends AppCompatActivity implements View.OnClickListener {
         datePickerDoB= new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month=month+1;
                 Log.d(TAG,"onDateSet: dd/mm/yyyy:"+ dayOfMonth+"/"+month+"/"+year);
 
                 String date=dayOfMonth+"/"+month+"/"+year;
